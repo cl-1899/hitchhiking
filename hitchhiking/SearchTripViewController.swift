@@ -4,9 +4,11 @@ import FirebaseAuth
 class SearchTripViewController: UIViewController {
     
     var cityDataManager: CityDataManager!
+    var tripManager: TripManager!
     var searchTripView: UIView!
     var fromWhereTextField: UITextField!
     var toWhereTextField: UITextField!
+    var datePicker: UIDatePicker!
     var cityPickerView: UITableView!
     var filteredCities: [String] = []
     var isShowingCityPicker: Bool = false
@@ -14,10 +16,12 @@ class SearchTripViewController: UIViewController {
     let backgroundImage = UIImage(named: "backgroundImage")
 
     private func addSearchTripView(parentView: UIViewController) {
-        cityPickerView = UITableView(frame: CGRect(x: (parentView.view.frame.width - 315) / 2, y: (parentView.view.frame.height - 210) / 2 + 110, width: 315, height: 210))
+        cityPickerView = UITableView(frame: .zero)
         cityPickerView.dataSource = self
         cityPickerView.delegate = self
         cityPickerView.isHidden = true
+        cityPickerView.layer.cornerRadius = 15
+        cityPickerView.translatesAutoresizingMaskIntoConstraints = false
         
         let logoutButton = UIButton(type: .system)
         logoutButton.setTitle("Выйти", for: .normal)
@@ -58,10 +62,10 @@ class SearchTripViewController: UIViewController {
         secondSeparatorView.translatesAutoresizingMaskIntoConstraints = false
         searchTripView.addSubview(secondSeparatorView)
         
-        let datePicker = UIDatePicker()
+        datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.setDate(Date(), animated: false)
-    //    datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         searchTripView.addSubview(datePicker)
         
@@ -71,17 +75,17 @@ class SearchTripViewController: UIViewController {
         searchButton.setTitleColor(UIColor.white, for: .normal)
         searchButton.layer.cornerRadius = 15
         searchButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-    //    searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchTripView.addSubview(searchButton)
         
         searchTripView.widthAnchor.constraint(equalToConstant: 315).isActive = true
-        searchTripView.heightAnchor.constraint(equalToConstant: 210).isActive = true
+        searchTripView.heightAnchor.constraint(equalToConstant: 180).isActive = true
         
         fromWhereTextField.leadingAnchor.constraint(equalTo: searchTripView.leadingAnchor, constant: 10).isActive = true
         fromWhereTextField.trailingAnchor.constraint(equalTo: searchTripView.trailingAnchor, constant: -10).isActive = true
-        fromWhereTextField.topAnchor.constraint(equalTo: searchTripView.topAnchor, constant: 15).isActive = true
-        fromWhereTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        fromWhereTextField.topAnchor.constraint(equalTo: searchTripView.topAnchor, constant: 10).isActive = true
+        fromWhereTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         firstSeparatorView.leadingAnchor.constraint(equalTo: fromWhereTextField.leadingAnchor).isActive = true
         firstSeparatorView.trailingAnchor.constraint(equalTo: fromWhereTextField.trailingAnchor).isActive = true
@@ -91,7 +95,7 @@ class SearchTripViewController: UIViewController {
         toWhereTextField.leadingAnchor.constraint(equalTo: searchTripView.leadingAnchor, constant: 10).isActive = true
         toWhereTextField.trailingAnchor.constraint(equalTo: searchTripView.trailingAnchor, constant: -10).isActive = true
         toWhereTextField.topAnchor.constraint(equalTo: firstSeparatorView.bottomAnchor).isActive = true
-        toWhereTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        toWhereTextField.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         secondSeparatorView.leadingAnchor.constraint(equalTo: toWhereTextField.leadingAnchor).isActive = true
         secondSeparatorView.trailingAnchor.constraint(equalTo: toWhereTextField.trailingAnchor).isActive = true
@@ -99,30 +103,30 @@ class SearchTripViewController: UIViewController {
         secondSeparatorView.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
         
         datePicker.leadingAnchor.constraint(equalTo: searchTripView.leadingAnchor, constant: 10).isActive = true
-        datePicker.topAnchor.constraint(equalTo: secondSeparatorView.bottomAnchor, constant: 15).isActive = true
-        datePicker.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        datePicker.topAnchor.constraint(equalTo: secondSeparatorView.bottomAnchor, constant: 10).isActive = true
+        datePicker.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
         searchButton.leadingAnchor.constraint(equalTo: searchTripView.leadingAnchor).isActive = true
         searchButton.trailingAnchor.constraint(equalTo: searchTripView.trailingAnchor).isActive = true
         searchButton.bottomAnchor.constraint(equalTo: searchTripView.bottomAnchor).isActive = true
-        searchButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        searchButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
+        parentView.view.addSubview(searchTripView)
         parentView.view.addSubview(cityPickerView)
         parentView.view.addSubview(logoutButton)
-        parentView.view.addSubview(searchTripView)
-        parentView.view.bringSubviewToFront(cityPickerView)
         
-        logoutButton.topAnchor.constraint(equalTo: parentView.view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        logoutButton.trailingAnchor.constraint(equalTo: parentView.view.trailingAnchor, constant: -10).isActive = true
+        logoutButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
+        logoutButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
         logoutButton.heightAnchor.constraint(equalToConstant: 35).isActive = true
         logoutButton.widthAnchor.constraint(equalToConstant: 70).isActive = true
         
-        searchTripView.centerXAnchor.constraint(equalTo: parentView.view.centerXAnchor).isActive = true
-        searchTripView.bottomAnchor.constraint(equalTo: parentView.view.centerYAnchor).isActive = true
+        searchTripView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        searchTripView.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 10).isActive = true
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        cityPickerView.topAnchor.constraint(equalTo: searchTripView.bottomAnchor, constant: 10).isActive = true
+        cityPickerView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -4).isActive = true
+        cityPickerView.centerXAnchor.constraint(equalTo: searchTripView.centerXAnchor).isActive = true
+        cityPickerView.widthAnchor.constraint(equalToConstant: 315).isActive = true
     }
     
     private func alertAfterPress(_ message: String) {
@@ -139,32 +143,21 @@ class SearchTripViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
         addSearchTripView(parentView: self)
-        fromWhereTextField.becomeFirstResponder()
         
         cityDataManager = CityDataManager()
+        tripManager = TripManager()
+        
+        print(tripManager.trips)
     }
     
     func showCityPicker(with searchText: String?) {
         if let searchText = searchText, !searchText.isEmpty {
             filteredCities = cityDataManager.searchCity(request: searchText)
             cityPickerView.reloadData()
+            cityPickerView.layoutIfNeeded()
                         
             cityPickerView.isHidden = false
             isShowingCityPicker = true
-            
-            let maxTableHeight: CGFloat = 210
-            let rowHeight: CGFloat = 42
-            var numRows: Int
-            if !filteredCities.isEmpty {
-                numRows = filteredCities.count
-            } else {
-                numRows = 1
-            }
-            let tableHeight = min(Double(numRows) * rowHeight, maxTableHeight)
-            
-            cityPickerView.frame.size.height = tableHeight
-            
-            self.view.bringSubviewToFront(cityPickerView)
         } else {
             hideCityPicker()
         }
@@ -173,6 +166,31 @@ class SearchTripViewController: UIViewController {
     func hideCityPicker() {
         cityPickerView.isHidden = true
         isShowingCityPicker = false
+    }
+    
+    @objc func searchButtonTapped(_ sender: UIButton) {
+        let fromWhere = fromWhereTextField.text ?? ""
+        let toWhere = toWhereTextField.text ?? ""
+        let selectedDate = datePicker.date
+        
+        let filteredTrips = tripManager.getAllTrips().filter { trip in
+            let fromMatch = fromWhere.isEmpty || trip.from.fullName.localizedCaseInsensitiveContains(fromWhere)
+            let toMatch = toWhere.isEmpty || trip.to.fullName.localizedCaseInsensitiveContains(toWhere)
+            let dateMatch = Calendar.current.isDate(trip.date, inSameDayAs: selectedDate)
+            
+            return fromMatch && toMatch && dateMatch
+        }
+        
+        if filteredTrips.isEmpty {
+            let alert = UIAlertController(title: "Ничего не найдено", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else {
+            let tripResultsVC = TripResultsViewController(trips: filteredTrips)
+            let tripResultsNavController = UINavigationController(rootViewController: tripResultsVC)
+            present(tripResultsNavController, animated: true, completion: nil)
+//            navigationController?.pushViewController(tripResultsVC, animated: true)
+        }
     }
     
     @objc private func logoutButtonTapped() {
@@ -188,23 +206,8 @@ class SearchTripViewController: UIViewController {
         navigationController?.popToRootViewController(animated: true)
     }
     
-    @objc private func keyboardWillShow(notification: Notification) {
-        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
-            return
-        }
-        let tableViewBottomOffset = view.frame.height - cityPickerView.frame.maxY
-        let keyboardHeight = keyboardFrame.height
-                
-        if tableViewBottomOffset < keyboardHeight {
-            let contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight - tableViewBottomOffset, right: 0)
-            cityPickerView.contentInset = contentInset
-            cityPickerView.scrollIndicatorInsets = contentInset
-        }
-    }
-
-    @objc private func keyboardWillHide(notification: Notification) {
-        cityPickerView.contentInset = .zero
-        cityPickerView.scrollIndicatorInsets = .zero
+    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
+        view.endEditing(true)
     }
 }
 
@@ -252,4 +255,28 @@ extension SearchTripViewController: UITextFieldDelegate {
     }
 }
 
-
+//func showCityPicker(with searchText: String?) {
+//        if let searchText = searchText, !searchText.isEmpty {
+//            filteredCities = cityDataManager.searchCity(request: searchText)
+//            cityPickerView.reloadData()
+//
+//            cityPickerView.isHidden = false
+//            isShowingCityPicker = true
+//
+//            let maxTableHeight: CGFloat = 180
+//            let rowHeight: CGFloat = 36
+//            var numRows: Int
+//            if !filteredCities.isEmpty {
+//                numRows = filteredCities.count
+//            } else {
+//                numRows = 1
+//            }
+//            let tableHeight = min(Double(numRows) * rowHeight, maxTableHeight)
+//
+//            cityPickerView.frame.size.height = tableHeight
+//
+//            self.view.bringSubviewToFront(cityPickerView)
+//        } else {
+//            hideCityPicker()
+//        }
+//    }

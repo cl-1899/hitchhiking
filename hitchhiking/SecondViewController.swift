@@ -80,7 +80,7 @@ class SecondViewController: UIViewController {
                         self.alertAfterPress(messsage)
                     default:
                         print("Ошибка при сохранении данных пользователя: \(error.localizedDescription)")
-                        self.alertAfterPress("Произошла ошибка при регистрации, AAAпопробуйте ещё раз чуть позже.")
+                        self.alertAfterPress("Произошла ошибка при регистрации, попробуйте ещё раз чуть позже.")
                     }
                 }
                 return
@@ -88,7 +88,7 @@ class SecondViewController: UIViewController {
             
             guard let userId = authResult?.user.uid else {
                 print("Не удалось получить идентификатор пользователя")
-                self.alertAfterPress("Произошла ошибка при регистрации, BBBпопробуйте ещё раз чуть позже.")
+                self.alertAfterPress("Произошла ошибка при регистрации, попробуйте ещё раз чуть позже.")
                 return
             }
             
@@ -98,7 +98,7 @@ class SecondViewController: UIViewController {
             userRef.setValue(userData) { (error, ref) in
                 if let error = error {
                     print("Ошибка при сохранении данных пользователя: \(error.localizedDescription)")
-                    self.alertAfterPress("Произошла ошибка при регистрации, CCCпопробуйте ещё раз чуть позже.")
+                    self.alertAfterPress("Произошла ошибка при регистрации, попробуйте ещё раз чуть позже.")
                 } else {
                     let message = "Регистрация прошла успешно."
                     print(message)
