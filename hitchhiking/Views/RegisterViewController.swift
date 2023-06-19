@@ -1,6 +1,4 @@
 import UIKit
-import FirebaseAuth
-import FirebaseDatabase
 
 protocol RegisterViewProtocol: AnyObject {
     func showErrorAlert(_ error: Error)

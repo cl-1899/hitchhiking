@@ -1,5 +1,4 @@
 import UIKit
-import FirebaseAuth
 
 protocol SearchTripViewProtocol: AnyObject {
     func showNoResultsAfterSearchAlert()
@@ -13,7 +12,6 @@ protocol SearchTripViewProtocol: AnyObject {
 class SearchTripViewController: UIViewController {
     private var presenter: SearchTripPresenterProtocol!
     private var cityDataManager: CityDataManager!
-//    private var tripManager: TripManager!
     private var logoutButton: UIButton!
     private var searchTripView: UIView!
     private var fromWhereTextField: UITextField!
@@ -32,7 +30,6 @@ class SearchTripViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
         cityDataManager = CityDataManager()
-//        tripManager = TripManager()
         addSearchTripView()
         setupPresenter()
     }

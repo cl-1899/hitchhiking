@@ -1,5 +1,4 @@
 import UIKit
-import FirebaseAuth
 
 protocol LoginViewProtocol: AnyObject {
     func showErrorAlert(_ error: Error)

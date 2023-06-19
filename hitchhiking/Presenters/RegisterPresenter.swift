@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 protocol RegisterPresenterProtocol {
     func registerUser(email: String, password: String)

@@ -1,5 +1,4 @@
 import UIKit
-import FirebaseAuth
 
 protocol CreateTripViewProtocol: AnyObject {
     func showErrorAlert(_ error: Error)
@@ -12,7 +11,6 @@ protocol CreateTripViewProtocol: AnyObject {
 class CreateTripViewController: UIViewController {
     private var presenter: CreateTripPresenterProtocol!
     private var cityDataManager: CityDataManager!
-//    private var tripManager: TripManager!
     private var logoutButton: UIButton!
     private var createTripView: UIView!
     private var nameTextField: UITextField!
@@ -31,11 +29,9 @@ class CreateTripViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        navigationController?.setNavigationBarHidden(true, animated: false)
         
         self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
         cityDataManager = CityDataManager()
-//        tripManager = TripManager()
         addCreateTripView()
         setupPresenter()
     }
