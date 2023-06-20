@@ -33,8 +33,6 @@ Hitchhiking - это приложение для удобного поиска �
 
 Все скриншоты были сделаны в симуляторе iPhone 14Pro.
 
-Login            |  Registration          |  ForgotPassword            |  WrongEmailAlert            |  SearchTrip          |  SearchFrom            |  SearchTo          |  NothingFoundAlert          |  CreateTrip          |  TripResults
-:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------::-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
 ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/Login.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/Registration.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/ForgotPassword.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/WrongEmailAlert.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/SearchTrip.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/SearchFrom.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/SearchTo.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/NothingFoundAlert.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/CreateTrip.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/TripResults.png)
 
 ### Планируется доработка приложения
