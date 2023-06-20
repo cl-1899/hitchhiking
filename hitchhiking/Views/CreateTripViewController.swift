@@ -22,6 +22,7 @@ class CreateTripViewController: UIViewController {
     private var availableSeatsCountLabel: UILabel!
     private var createButton: UIButton!
     private var cityPickerView: UITableView!
+    private var cityPickerTopConstraint: NSLayoutConstraint!
     private var filteredCities: [String] = []
     private var isShowingCityPicker: Bool = false
     
@@ -32,11 +33,11 @@ class CreateTripViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
         cityDataManager = CityDataManager()
-        addCreateTripView()
+        setupViews()
         setupPresenter()
     }
 
-    private func addCreateTripView() {
+    private func setupViews() {
         cityPickerView = UITableView(frame: .zero)
         cityPickerView.dataSource = self
         cityPickerView.delegate = self
@@ -118,6 +119,16 @@ class CreateTripViewController: UIViewController {
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         createTripView.addSubview(datePicker)
         
+        let fifthSeparatorView = UIView()
+        fifthSeparatorView.backgroundColor = UIColor.lightGray
+        fifthSeparatorView.translatesAutoresizingMaskIntoConstraints = false
+        createTripView.addSubview(fifthSeparatorView)
+        
+        let sixSeparatorView = UIView()
+        sixSeparatorView.backgroundColor = UIColor.lightGray
+        sixSeparatorView.translatesAutoresizingMaskIntoConstraints = false
+        createTripView.addSubview(sixSeparatorView)
+        
         availableSeatsStepper = UIStepper()
         availableSeatsStepper.minimumValue = 1
         availableSeatsStepper.maximumValue = 10
@@ -143,7 +154,7 @@ class CreateTripViewController: UIViewController {
         createTripView.addSubview(createButton)
         
         createTripView.widthAnchor.constraint(equalToConstant: 315).isActive = true
-        createTripView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        createTripView.heightAnchor.constraint(equalToConstant: 270).isActive = true
         
         nameTextField.leadingAnchor.constraint(equalTo: createTripView.leadingAnchor, constant: 10).isActive = true
         nameTextField.trailingAnchor.constraint(equalTo: createTripView.trailingAnchor, constant: -10).isActive = true
@@ -153,7 +164,7 @@ class CreateTripViewController: UIViewController {
         firstSeparatorView.leadingAnchor.constraint(equalTo: nameTextField.leadingAnchor).isActive = true
         firstSeparatorView.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor).isActive = true
         firstSeparatorView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor).isActive = true
-        firstSeparatorView.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
+        firstSeparatorView.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
         
         fromWhereTextField.leadingAnchor.constraint(equalTo: createTripView.leadingAnchor, constant: 10).isActive = true
         fromWhereTextField.trailingAnchor.constraint(equalTo: createTripView.trailingAnchor, constant: -10).isActive = true
@@ -163,7 +174,7 @@ class CreateTripViewController: UIViewController {
         secondSeparatorView.leadingAnchor.constraint(equalTo: fromWhereTextField.leadingAnchor).isActive = true
         secondSeparatorView.trailingAnchor.constraint(equalTo: fromWhereTextField.trailingAnchor).isActive = true
         secondSeparatorView.topAnchor.constraint(equalTo: fromWhereTextField.bottomAnchor).isActive = true
-        secondSeparatorView.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
+        secondSeparatorView.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
         
         toWhereTextField.leadingAnchor.constraint(equalTo: createTripView.leadingAnchor, constant: 10).isActive = true
         toWhereTextField.trailingAnchor.constraint(equalTo: createTripView.trailingAnchor, constant: -10).isActive = true
@@ -173,7 +184,7 @@ class CreateTripViewController: UIViewController {
         thirdSeparatorView.leadingAnchor.constraint(equalTo: toWhereTextField.leadingAnchor).isActive = true
         thirdSeparatorView.trailingAnchor.constraint(equalTo: toWhereTextField.trailingAnchor).isActive = true
         thirdSeparatorView.topAnchor.constraint(equalTo: toWhereTextField.bottomAnchor).isActive = true
-        thirdSeparatorView.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
+        thirdSeparatorView.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
         
         phoneNumberTextField.leadingAnchor.constraint(equalTo: createTripView.leadingAnchor, constant: 10).isActive = true
         phoneNumberTextField.trailingAnchor.constraint(equalTo: createTripView.trailingAnchor, constant: -10).isActive = true
@@ -183,17 +194,28 @@ class CreateTripViewController: UIViewController {
         forthSeparatorView.leadingAnchor.constraint(equalTo: phoneNumberTextField.leadingAnchor).isActive = true
         forthSeparatorView.trailingAnchor.constraint(equalTo: phoneNumberTextField.trailingAnchor).isActive = true
         forthSeparatorView.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor).isActive = true
-        forthSeparatorView.heightAnchor.constraint(equalToConstant: 0.4).isActive = true
+        forthSeparatorView.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
         
         datePicker.leadingAnchor.constraint(equalTo: createTripView.leadingAnchor, constant: 10).isActive = true
         datePicker.topAnchor.constraint(equalTo: forthSeparatorView.bottomAnchor, constant: 5).isActive = true
         datePicker.heightAnchor.constraint(equalToConstant: 35).isActive = true
         
-        availableSeatsStepper.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 5).isActive = true
-        availableSeatsStepper.centerXAnchor.constraint(equalTo: createTripView.centerXAnchor).isActive = true
+        fifthSeparatorView.leadingAnchor.constraint(equalTo: datePicker.trailingAnchor, constant: 5).isActive = true
+        fifthSeparatorView.topAnchor.constraint(equalTo: datePicker.topAnchor).isActive = true
+        fifthSeparatorView.bottomAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: 5).isActive = true
+        fifthSeparatorView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        fifthSeparatorView.widthAnchor.constraint(equalToConstant: 0.6).isActive = true
+        
+        sixSeparatorView.topAnchor.constraint(equalTo: fifthSeparatorView.bottomAnchor).isActive = true
+        sixSeparatorView.leadingAnchor.constraint(equalTo: datePicker.leadingAnchor).isActive = true
+        sixSeparatorView.trailingAnchor.constraint(equalTo: fifthSeparatorView.trailingAnchor).isActive = true
+        sixSeparatorView.heightAnchor.constraint(equalToConstant: 0.6).isActive = true
+        
+        availableSeatsStepper.topAnchor.constraint(equalTo: forthSeparatorView.bottomAnchor, constant: 8).isActive = true
+        availableSeatsStepper.leadingAnchor.constraint(equalTo: fifthSeparatorView.trailingAnchor, constant: 20).isActive = true
         availableSeatsStepper.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        availableSeatsCountLabel.topAnchor.constraint(equalTo: availableSeatsStepper.bottomAnchor, constant: 5).isActive = true
+        availableSeatsCountLabel.topAnchor.constraint(equalTo: sixSeparatorView.bottomAnchor, constant: 5).isActive = true
         availableSeatsCountLabel.centerXAnchor.constraint(equalTo: createTripView.centerXAnchor).isActive = true
         availableSeatsCountLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
@@ -210,7 +232,6 @@ class CreateTripViewController: UIViewController {
         createTripView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         createTripView.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 10).isActive = true
         
-        cityPickerView.topAnchor.constraint(equalTo: createTripView.bottomAnchor, constant: 10).isActive = true
         cityPickerView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -4).isActive = true
         cityPickerView.centerXAnchor.constraint(equalTo: createTripView.centerXAnchor).isActive = true
         cityPickerView.widthAnchor.constraint(equalToConstant: 315).isActive = true
@@ -300,6 +321,7 @@ extension CreateTripViewController: CreateTripViewProtocol {
         filteredCities = cityDataManager.searchCity(request: searchText)
         cityPickerView.reloadData()
         cityPickerView.layoutIfNeeded()
+        view.bringSubviewToFront(cityPickerView)
 
         cityPickerView.isHidden = false
         isShowingCityPicker = true
@@ -350,12 +372,18 @@ extension CreateTripViewController: UITableViewDataSource, UITableViewDelegate {
 extension CreateTripViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField == fromWhereTextField || textField == toWhereTextField {
+            if cityPickerTopConstraint != nil {
+                cityPickerTopConstraint.isActive = false
+            }
+            cityPickerTopConstraint = cityPickerView.topAnchor.constraint(equalTo: textField.bottomAnchor)
+            cityPickerTopConstraint.isActive = true
             presenter.showCityPicker(with: textField.text)
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == fromWhereTextField || textField == toWhereTextField {
+            cityPickerTopConstraint?.isActive = false
             presenter.hideCityPicker()
         }
     }

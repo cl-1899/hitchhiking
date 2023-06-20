@@ -19,6 +19,7 @@ class SearchTripViewController: UIViewController {
     private var datePicker: UIDatePicker!
     private var searchButton: UIButton!
     private var cityPickerView: UITableView!
+    private var cityPickerTopConstraint: NSLayoutConstraint!
     private var filteredCities: [String] = []
     private var isShowingCityPicker: Bool = false
     
@@ -30,11 +31,11 @@ class SearchTripViewController: UIViewController {
         
         self.view.backgroundColor = UIColor(patternImage: backgroundImage!)
         cityDataManager = CityDataManager()
-        addSearchTripView()
+        setupViews()
         setupPresenter()
     }
 
-    private func addSearchTripView() {
+    private func setupViews() {
         cityPickerView = UITableView(frame: .zero)
         cityPickerView.dataSource = self
         cityPickerView.delegate = self
@@ -141,7 +142,6 @@ class SearchTripViewController: UIViewController {
         searchTripView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         searchTripView.topAnchor.constraint(equalTo: logoutButton.bottomAnchor, constant: 10).isActive = true
         
-        cityPickerView.topAnchor.constraint(equalTo: searchTripView.bottomAnchor, constant: 10).isActive = true
         cityPickerView.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -4).isActive = true
         cityPickerView.centerXAnchor.constraint(equalTo: searchTripView.centerXAnchor).isActive = true
         cityPickerView.widthAnchor.constraint(equalToConstant: 315).isActive = true
@@ -213,6 +213,8 @@ extension SearchTripViewController: SearchTripViewProtocol {
         filteredCities = cityDataManager.searchCity(request: searchText)
         cityPickerView.reloadData()
         cityPickerView.layoutIfNeeded()
+        
+        view.bringSubviewToFront(cityPickerView)
 
         cityPickerView.isHidden = false
         isShowingCityPicker = true
@@ -263,12 +265,18 @@ extension SearchTripViewController: UITableViewDataSource, UITableViewDelegate {
 extension SearchTripViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField == fromWhereTextField || textField == toWhereTextField {
+            if cityPickerTopConstraint != nil {
+                cityPickerTopConstraint.isActive = false
+            }
+            cityPickerTopConstraint = cityPickerView.topAnchor.constraint(equalTo: textField.bottomAnchor)
+            cityPickerTopConstraint.isActive = true
             presenter.showCityPicker(with: textField.text)
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         if textField == fromWhereTextField || textField == toWhereTextField {
+            cityPickerTopConstraint?.isActive = false
             presenter.hideCityPicker()
         }
     }
