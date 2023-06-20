@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>538058035401-qqoe4dv40l7q27deb5gfo2hh9ma0k3o2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.538058035401-qqoe4dv40l7q27deb5gfo2hh9ma0k3o2</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBQvba4U9ZXYVOBdzkGMjsQntRF32X6-5U</string>
+	<key>GCM_SENDER_ID</key>
+	<string>538058035401</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>andrei1899.hitchhiking</string>
+	<key>PROJECT_ID</key>
+	<string>hitch-hiking-63212</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hitch-hiking-63212.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:538058035401:ios:53e09266ca20a705ca3d18</string>
+	<key>DATABASE_URL</key>
+	<string>https://hitch-hiking-63212-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
