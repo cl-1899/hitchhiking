@@ -115,7 +115,6 @@ class CreateTripViewController: UIViewController {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.setDate(Date(), animated: false)
-        datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         createTripView.addSubview(datePicker)
         
@@ -282,11 +281,6 @@ class CreateTripViewController: UIViewController {
     
     @objc private func logoutButtonTapped() {
         presenter.signOut()
-    }
-
-    
-    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        view.endEditing(true)
     }
 }
 

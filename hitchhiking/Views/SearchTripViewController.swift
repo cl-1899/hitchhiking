@@ -88,7 +88,6 @@ class SearchTripViewController: UIViewController {
         datePicker = UIDatePicker()
         datePicker.datePickerMode = .date
         datePicker.setDate(Date(), animated: false)
-        datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         datePicker.translatesAutoresizingMaskIntoConstraints = false
         searchTripView.addSubview(datePicker)
         
@@ -163,16 +162,10 @@ class SearchTripViewController: UIViewController {
     @objc private func logoutButtonTapped() {
         presenter.signOut()
     }
-
-    
-    @objc private func datePickerValueChanged(_ sender: UIDatePicker) {
-        view.endEditing(true)
-    }
     
     @objc private func dismissTripResults() {
         dismiss(animated: true, completion: nil)
     }
-
 }
 
 extension SearchTripViewController: SearchTripViewProtocol {
