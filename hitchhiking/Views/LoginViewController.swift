@@ -21,6 +21,10 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupAppearance()
         setupPresenter()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func setupAppearance() {
@@ -86,6 +90,10 @@ class LoginViewController: UIViewController {
         }
         
         loginPresenter.signIn(email: email, password: password)
+    }
+    
+    @objc private func handleTap(_ gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
 
