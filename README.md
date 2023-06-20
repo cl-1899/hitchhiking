@@ -2,30 +2,46 @@
 
 # Hitchhiking
 
-**РУС:** Данное приложение создаётся для удобного поиска попуток и попутчиков по Беларуси.
+### Данный проект является курсовым в рамках обучения в школе [TeachMeSkills](https://teachmeskills.by) "iOS разработчик".
 
-**ENG:** This application is being created for easy search for hitchhikers and drivers travelers in Belarus.
+## Описание
 
-## Описание (Description)
+Hitchhiking - это приложение для удобного поиска попуток и попутчиков по Беларуси, которое позволяет пользователям зарегистрироваться, войти в свою учетную запись и создавать или искать поездки. Приложение использует Firebase Authentication для аутентификации пользователей и Firebase Realtime Database для сохранения данных.
 
-**РУС:** В данном приложении встроены поездки на сегодняшний день. Есть возможность для пользователя создать поиск поездки из города А в город Б, и посмотреть актуальные. После выбора подходящей - позвонить по телефону, который указан в объявлении. Есть возможность зарегестрироваться и залогиниться в приложении, так же если забыли пароль, отправить емаил для восстановления разработчику.
+## Возможности 
 
- **Планируется доработка приложения:**  
- 1) Более расширенный фунционал при регистрации (Apple Id, Gmail, по номеру телефона через смс)  
- 2) Автоматическое восстановление пароля (в данный момент только через помощь разработчика)  
- 3) Настройки (добавление в личный кабинет личной информации)  
- 4) Возможность создания поездки водителю для поиска попутчиков  
- 5) Возможность бронирования поездки сразу в приложении без звонка  
- 6) Добавление карты в приложение  
- 7) После добавления карты реализовать предложения выбора промежуточных городов по пути водителю при создании поездки  
- 
- **ENG:** This application has built-in trips for today. It is possible for the user to create a search for a trip from city A to city B, and see the current ones. After choosing the right one, to call the number indicated in the advertise. It is possible to register and log in to the application, also if you forgot your password, to send email to the developer for recovery.
- 
-  **The application is planned to be improved:**  
-  1) More advanced functionality during registration (Apple Id, Gmail, by phone number via SMS)  
-  2) Automatic password recovery (currently only through developer assistance)  
-  3) Settings (adding personal information to your personal account)  
-  4) The ability to create a trip for the driver to search for hitchhikers  
-  5) The ability to book a trip immediately in the application without a call  
-  6) Adding a map to the application  
-  7) After adding the map, implement suggestions for choosing intermediate cities along the way for the driver when creating a trip  
+- Регистрация нового пользователя и вход в учетную запись с использованием Firebase Authentication.
+- Восстановление пароля через электронную почту с помощью Telegram бота для связи с разработчиками.
+- Поиск поездок по дате и по городам из точки А в точку Б. Обязательной к заполнению является только дата, города - по желанию. Поэтому есть возможность посмотреть все поездки на определённую дату, и так же посмотреть все поездки из какого то города или в какой город в определённую дату.
+- Создание новых поездок с указанием  имени водителя, даты, города отправления, города прибытия, контактного телефона и количества свободных мест.
+- Просмотр списка доступных поездок с подробной информацией, включая город отправления, город назначения, дату, имя и контактный телефон водителя, и так же количество доступных мест.
+
+## Архитектура
+
+- MVP
+
+## Технологии
+
+- Swift
+- UIKit
+- Firebase Authentication
+- Firebase realtime Database
+- NSLayoutConstraint
+- Telegram API
+
+## Скриншоты
+
+Все скриншоты были сделаны в симуляторе iPhone 14Pro.
+
+Login            |  Registration          |  ForgotPassword            |  WrongEmailAlert            |  SearchTrip          |  SearchFrom            |  SearchTo          |  NothingFoundAlert          |  CreateTrip          |  TripResults
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------::-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/Login.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/Registration.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/ForgotPassword.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/WrongEmailAlert.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/SearchTrip.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/SearchFrom.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/SearchTo.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/NothingFoundAlert.png) |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/CreateTrip.png)  |  ![](https://github.com/cl-1899/hitchhiking/blob/main/Screenshots/TripResults.png)
+
+### Планируется доработка приложения
+
+ - Более расширенный фунционал при регистрации (Apple Id, Gmail, по номеру телефона через смс)  
+ - Автоматическое восстановление пароля (в данный момент только через помощь разработчика)  
+ - Настройки (добавление в личный кабинет личной информации)  
+ - Возможность бронирования поездки сразу в приложении без звонка  
+ - Добавление карты в приложение  
+ - После добавления карты реализовать предложения выбора промежуточных городов по пути водителю при создании поездки. 
