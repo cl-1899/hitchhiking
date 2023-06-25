@@ -25,7 +25,8 @@ Hitchhiking - это приложение для удобного поиска �
 - Swift
 - UIKit
 - Firebase Authentication
-- Firebase realtime Database
+- Firebase Realtime Database
+- Regular Expressions
 - NSLayoutConstraint
 - Telegram API
 
