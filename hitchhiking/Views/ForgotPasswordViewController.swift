@@ -21,6 +21,8 @@ class ForgotPasswordViewController: UIViewController {
         emailTextField.backgroundColor = UIColor.systemGray3
         emailTextField.placeholder = "Введите email"
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
+        emailTextField.keyboardType = .emailAddress
+        emailTextField.textContentType = .emailAddress
         self.view.addSubview(emailTextField)
         
         let sendEmailButton = UIButton(type: .system)

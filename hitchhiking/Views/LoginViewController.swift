@@ -31,8 +31,10 @@ class LoginViewController: UIViewController {
         self.navigationItem.title = title
         
         self.usernameTextField.keyboardType = .emailAddress
+        self.usernameTextField.textContentType = .username
         
         self.passwordTextField.isSecureTextEntry = true
+        self.passwordTextField.textContentType = .password
         
         self.forgotPasswordButton.layer.cornerRadius = 20
         self.forgotPasswordButton.setTitle("Забыли пароль?", for: .normal)

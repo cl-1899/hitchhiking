@@ -35,9 +35,16 @@ class RegisterViewController: UIViewController {
         self.registrationLabel.sizeToFit()
         
         self.emailTextField.keyboardType = .emailAddress
+        self.emailTextField.textContentType = .username
         
         self.passwordTextField.isSecureTextEntry = true
+        self.passwordTextField.textContentType = .newPassword
+        
         self.confirmPasswordTextField.isSecureTextEntry = true
+        self.confirmPasswordTextField.textContentType = .newPassword
+        
+        self.passwordTextField.passwordRules = nil
+        self.confirmPasswordTextField.passwordRules = nil
         
         self.registerButton.layer.cornerRadius = 10
         self.registerButton.setTitle("Зарегистрироваться", for: .normal)
