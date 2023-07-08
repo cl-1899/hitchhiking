@@ -11,6 +11,7 @@
 		3B0D90EC2A3F69EF00975286 /* CreateTripPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D90EB2A3F69EF00975286 /* CreateTripPresenter.swift */; };
 		3B0D90EE2A3F6A0200975286 /* CreateTripModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D90ED2A3F6A0200975286 /* CreateTripModel.swift */; };
 		3B0D90F02A406F4600975286 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0D90EF2A406F4600975286 /* Trip.swift */; };
+		3B0D90F22A419B5700975286 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B0D90F12A419B5700975286 /* GoogleService-Info.plist */; };
 		3B3AE1E92A2F92EC00A165BD /* SearchTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE1E82A2F92EC00A165BD /* SearchTripViewController.swift */; };
 		3B3AE1EB2A31D39D00A165BD /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE1EA2A31D39D00A165BD /* ForgotPasswordViewController.swift */; };
 		3B3AE1ED2A31F0D300A165BD /* StyleChangedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE1EC2A31F0D300A165BD /* StyleChangedTextField.swift */; };
@@ -19,7 +20,6 @@
 		3B3AE1F62A325B4E00A165BD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3AE1F52A325B4E00A165BD /* FirebaseDatabase */; };
 		3B3AE1F82A325B4E00A165BD /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3AE1F72A325B4E00A165BD /* FirebaseDatabaseSwift */; };
 		3B3AE1FB2A33255D00A165BD /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3AE1FA2A33255D00A165BD /* FirebaseAnalyticsSwift */; };
-		3B3AE1FD2A3349AC00A165BD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3AE1FC2A3349AC00A165BD /* GoogleService-Info.plist */; };
 		3B3AE2082A34826D00A165BD /* CityDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE2072A34826D00A165BD /* CityDataManager.swift */; };
 		3B3AE20C2A34E02000A165BD /* BelarusCities.json in Resources */ = {isa = PBXBuildFile; fileRef = 3B3AE20B2A34E02000A165BD /* BelarusCities.json */; };
 		3B3AE2122A36142C00A165BD /* TripResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3AE2112A36142C00A165BD /* TripResultsViewController.swift */; };
@@ -49,10 +49,10 @@
 		3B0D90EB2A3F69EF00975286 /* CreateTripPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripPresenter.swift; sourceTree = "<group>"; };
 		3B0D90ED2A3F6A0200975286 /* CreateTripModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTripModel.swift; sourceTree = "<group>"; };
 		3B0D90EF2A406F4600975286 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		3B0D90F12A419B5700975286 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3AE1E82A2F92EC00A165BD /* SearchTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTripViewController.swift; sourceTree = "<group>"; };
 		3B3AE1EA2A31D39D00A165BD /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		3B3AE1EC2A31F0D300A165BD /* StyleChangedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleChangedTextField.swift; sourceTree = "<group>"; };
-		3B3AE1FC2A3349AC00A165BD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3B3AE2072A34826D00A165BD /* CityDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDataManager.swift; sourceTree = "<group>"; };
 		3B3AE20B2A34E02000A165BD /* BelarusCities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = BelarusCities.json; sourceTree = "<group>"; };
 		3B3AE2112A36142C00A165BD /* TripResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripResultsViewController.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 				3B8503962A14FD5C003C834E /* Assets.xcassets */,
 				3B3AE20B2A34E02000A165BD /* BelarusCities.json */,
 				3B85039B2A14FD5C003C834E /* Info.plist */,
-				3B3AE1FC2A3349AC00A165BD /* GoogleService-Info.plist */,
+				3B0D90F12A419B5700975286 /* GoogleService-Info.plist */,
 			);
 			path = hitchhiking;
 			sourceTree = "<group>";
@@ -274,10 +274,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B85039A2A14FD5C003C834E /* LaunchScreen.storyboard in Resources */,
-				3B3AE1FD2A3349AC00A165BD /* GoogleService-Info.plist in Resources */,
 				3B8503972A14FD5C003C834E /* Assets.xcassets in Resources */,
 				3B3AE20C2A34E02000A165BD /* BelarusCities.json in Resources */,
 				3B8503952A14FD5B003C834E /* Main.storyboard in Resources */,
+				3B0D90F22A419B5700975286 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
